@@ -72,7 +72,7 @@ class GPTConfig:
     n_layer : int = 12 # number of layes 
     n_head : int = 12 # number of heads 
     n_embed : int = 768 # embedding dimension 
-
+    embd_pdrop: float = 0.1
 
 class GPT(nn.Module):
 
@@ -83,6 +83,7 @@ class GPT(nn.Module):
         self.transformer = nn.ModuleDict(dict(
             wte = nn.Embedding(config.vocab_size,config.n_embed),
             wpe = nn.Embedding(config.block_size,config.n_embed),
+            drop = nn.Dropout(config.embd_pdrop), # and error : fix 
             h = nn.ModuleList([Block(config) for _ in range(config.n_layer)]),
             ln_f = nn.LayerNorm(config.n_embed)
         ))
