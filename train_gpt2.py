@@ -112,10 +112,10 @@ class GPT(nn.Module):
         print("loading weights from pretrained gpt:",model_type)
 
         config_args = {
-            "gpt2": dict(n_layers=12,n_head=12,n_emded=768),
-            "gpt2-medium": dict(n_layers=24,n_head=16,n_emded=1024),
-            "gpt2-xl": dict(n_layers=36,n_head=20,n_emded=1280),
-            "gpt2": dict(n_layers=48,n_head=25,n_emded=1600),
+            "gpt2": dict(n_layer=12,n_head=12,n_emded=768),
+            "gpt2-medium": dict(n_layer=24,n_head=16,n_emded=1024),
+            "gpt2-xl": dict(n_layer=36,n_head=20,n_emded=1280),
+            "gpt2": dict(n_layer=48,n_head=25,n_emded=1600),
         }[model_type]
         config_args["vocab_size"] = 50257
         config_args["block_size"] = 1024
